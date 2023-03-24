@@ -1,0 +1,219 @@
+body {
+  background-color: #36393F;
+  color: white;
+  display:flex;
+}
+
+html,body{
+  height:100%;
+  width:100%;
+}
+* {
+  font-family: 'Roboto', sans-serif;
+}
+h1{
+  cursor:default;
+  font-size:1.3em;
+  font-weight:600;
+  font-family:"Noto Sans",sans-serif;
+  padding-bottom:1em;
+}
+h2
+{
+  text-transform:uppercase;
+  font-size:12px;
+  font-family:'Noto Sans';
+  font-weight:600;
+  cursor:default;
+  color:rgb(185, 187, 190);
+  padding-bottom:0.5em;
+}
+p{
+  font-family:'Roboto', sans-serif;
+  font-size:1.2em;
+  color:rgb(185, 187, 190);
+  cursor:default;
+}
+input,
+select,
+textarea{
+  background-color: rgb(47,49,54);
+  border: 1px solid #202225;
+  font-size: 14px;
+  padding: 6px;
+  color:white;
+  padding:10px;
+  border:1px solid rgb(4,4,5)
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:rgb(78,90,215);
+  outline:none;
+}
+
+input,
+select,
+textarea {
+  border-radius: 4px;
+  transition: 0.15s ease;
+}
+
+textarea
+{
+  width:150px;
+  height:300px;
+  resize:none;  
+}
+button {
+  background-color: rgb(88,101,242);
+  border: none;
+  color: white;
+  font-size: 14px;
+  padding: 0.5em 1.4em;
+  border-radius:2px;
+  transition:0.17s ease;
+  cursor:pointer;
+  margin-top:1em;
+}
+button:hover
+{
+  background-color: rgb(60,69,165);  
+}
+
+input[type="checkbox"]{
+  display:none;
+}
+input[type="checkbox"] + label{
+  display:inline-block;
+  width:42px;
+  height:24px;
+  background:#72767d;
+  border-radius:50px;
+  position:relative;
+  cursor:pointer;
+}
+input[type="checkbox"] + label:before{
+  content:"";
+  position:absolute;
+  margin:3px;
+  height:18px;
+  width:18px;
+  background:white;
+  border-radius:100%;
+  transition:0.1s ease;
+}
+input[type="checkbox"]:checked + label{
+  background:#5865f2;
+}
+input[type="checkbox"]:checked + label:before{
+  transform:translate3d(18px,0,0);
+}
+label:hover:before{
+  width:50%;
+}
+.container
+{
+  margin-bottom:2em;
+}
+.row
+{
+  display:flex;
+  padding: 1em 0;
+}
+.col
+{
+  padding-right:1em;
+}
+.sidebar
+{
+  width:21%;
+  height:100%;
+  background:red;
+  float:left;
+  background:#2f3136;
+  padding:32px;
+  flex: 0 0 21%;
+}
+.mainbar{
+  padding:20px;
+  float:left;
+  flex-grow:1; 
+}
+.sidebar h2
+{  
+  padding-left:1vw;
+}
+.box{
+  margin-top:0.5em;
+  margin-bottom:2em;
+  background-color: #2a2c30;    
+  color:white;
+  display: flex;  
+  align-items: center;
+}
+.sidebar ul li
+{
+  display:flex;
+  align-items:center;
+  padding:0.8em;  
+  font-family:"Noto Sans", sans-serif;
+  color:rgb(185, 187, 190);
+  font-size:0.9em;
+  padding-left:1vw;
+  margin-bottom:0.5em; 
+  border-radius:3px;
+}
+.sidebar ul li#activeLi
+{
+  background:#5865f2;
+  color:white;
+}
+.sidebar ul li:hover
+{
+  color:white;
+  cursor:pointer;
+}
+.sidebar ul li i
+{
+  font-size:1.5em;
+  padding-right:0.5em;
+}
+.sidebar .box .dronedesignation
+{
+  font-size:1em;  
+}
+.sidebar .box img
+{
+  width:24px;
+  height:24px;
+  margin:0.8em;
+  border-radius:100%;
+}
+.tab
+{
+  display:none;
+  padding:1.5em;
+}
+.activetab
+{
+  display:block;
+}
+form
+{
+  margin-top:1em;
+}
+.flexdown
+{
+  display:flex;
+  flex-direction:column;
+}
+#mantrastab input[type="text"]
+{
+  width:50vw;
+}
+input[type="number"]
+{
+  width:40px;
+}
