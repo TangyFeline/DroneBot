@@ -1,2 +1,2 @@
-disnake==2.5.1
-quart==0.18.3
+disnake
+quart
