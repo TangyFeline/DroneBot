@@ -12,9 +12,9 @@ from drone_enum import Mood, Censor
 import re
 from quart import Quart, render_template, send_from_directory, request
 import threading
+import signal
 
 TOKEN = os.environ['TOKEN']
-
 server_url = "http://localhost:5000"
 
 debug = True
@@ -251,15 +251,5 @@ async def set_values():
   await handle_set_values(data['key'], data['type'], data)
   return 'okay'
 
-async def run_server():
-  await quart.serving.run(app, port=5000)
-
-async def run_bot():
-  bot.run(TOKEN)
-
-async def run():
-    server_task = asyncio.create_task(app.run_task(port=5000))
-    bot_task = asyncio.create_task(asyncio.to_thread(bot.run, TOKEN))
-    await asyncio.gather(server_task, bot_task)
-
-asyncio.run(run())
+bot.loop.create_task(app.run_task('127.0.0.1', 5000))
+bot.run(TOKEN)
