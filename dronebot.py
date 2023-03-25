@@ -199,7 +199,7 @@ app = Quart(__name__)
 async def hello_world():
   return "hello world!"
 
-@app.route('/')
+@app.route('/health')
 async def health():
   return "All good!"
 
