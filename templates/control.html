@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Control Panel</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<h2>Configuring Drone</h2>
+		<div class="box">			
+			<img src="{{ data.avatar_url }}" alt="">			
+			<p class="dronedesignation">{{data.model}} #{{data.designation}}</p>
+		</div>
+		<h2>Settings</h2>
+		<ul>
+			<li onclick="switchTab(this)" id="activeLi" for="identitytab"><i class="bi bi-person-fill"></i> Identity</li>
+			<li onclick="switchTab(this)" for="namestab"><i class="bi bi-person-vcard-fill"></i> Names</li>
+			<li onclick="switchTab(this)" for="speechtab"><i class="bi bi-chat-fill"></i> Speech</li>
+			<li onclick="switchTab(this)" for="mantrastab"><i class="bi bi-chat-right-heart-fill"></i> Mantras</li>
+		</ul>
+	</div>
+	<div class="mainbar">
+		<div class="tab activetab" id="identitytab">
+			<h1>Identity</h1>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Expedita voluptate architecto excepturi consectetur in, voluptatibus harum dignissimos libero corrupti odio?</p>
+			<form autocomplete="off">
+				<div class="row">
+					<div class="col">
+						<h2>Model</h2><input name="model" type="text" value="{{data.model}}">						
+					</div>
+					<div class="col">
+						<h2>Designation</h2><input name="designation" type="text" value="{{data.designation}}" size=6 maxlength=4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas atque dolore soluta molestias perspiciatis quo blanditiis repellat dolorum hic ab. Blanditiis, tempora ipsam.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>Mood</h2>
+						<select name="mood" id="">
+							<option {% if data.mood == 1 %}selected{% endif %}>Normal</option>
+							<option {% if data.mood == 2 %}selected{% endif %}>Cheerful</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas atque dolore soluta molestias perspiciatis quo blanditiis repellat dolorum hic ab. Blanditiis, tempora ipsam.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>Visor</h2><input name="visor" type="text" value="{{data.visor}}" size=2 maxlength=5>
+					</div>
+				</div>
+				<button>Update!</button>
+			</form>
+		</div>
+		<div class="tab" id="namestab">
+			<h1>Names</h1>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos totam doloremque labore excepturi eius minima praesentium repellendus fuga ratione maxime.</p>
+			<form autocomplete="off">
+				<div class="row">				
+					<div class="col">					
+						<h2>Names</h2>
+						<textarea name="names" name="" id="" cols="30" rows="10">{{ data.names|join('\n') }}</textarea>				
+					</div>
+					<div class="flexdown">
+						<div class="col">
+							<h2>Censor Method</h2>							
+							<select name="names_censor" id="">
+								<option {% if data.censor_method == 1 %}selected{% endif %}>Blank</option>
+								<option {% if data.censor_method == 2 %}selected{% endif %}>Scramble</option>
+								<option {% if data.censor_method == 3 %}selected{% endif %}>Error</option>
+								<option {% if data.censor_method == 4 %}selected{% endif %}>Censor</option>
+								<option {% if data.censor_method == 5 %}selected{% endif %}>Replace</option>
+							</select>
+						</div>	
+						<div class="col">
+							<div class="row">
+								<div class="col">
+								<h2>Strict Personality Enforcement</h2>								
+									<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores quae doloremque incidunt laudantium deserunt sint voluptatem nihil qui autem sit.</p>	
+								</div>
+							</div>
+							<div class="col">							
+								<input type="checkbox" name="strictmode" id="mycheck" {% if data.strict_mode %}checked{% endif %}><label for="mycheck"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			<button>Update!</button>
+			</form>
+		</div>
+		<div class="tab" id="speechtab">
+			<h1>Speech</h1>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos totam doloremque labore excepturi eius minima praesentium repellendus fuga ratione maxime.</p>
+			<form autocomplete="off">
+				<div class="row">				
+					<div class="col">					
+						<h2>Forbidden Words</h2>
+						<textarea name="forbidden_words" id="" cols="30" rows="10">{{ data.forbidden_words|join('\n') }}</textarea>				
+					</div>
+					<div class="flexdown">
+						<div class="col">
+							<h2>Censor Method</h2>
+							<select name="forbiddencensor" id="">
+								<option {% if data.forbiddencensor == 1 %}selected{% endif %}>Blank</option>
+								<option {% if data.forbiddencensor == 2 %}selected{% endif %}>Scramble</option>
+								<option {% if data.forbiddencensor == 3 %}selected{% endif %}>Error</option>
+								<option {% if data.forbiddencensor == 4 %}selected{% endif %}>Censor</option>
+							</select>
+						</div>						
+					</div>
+				</div>
+			<button>Update!</button>
+			</form>
+		</div>
+		<div class="tab" id="mantrastab">
+			<h1>Mantras</h1>
+			<p>Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Deserunt, maiores, illum. Impedit quisquam, ullam delectus necessitatibus accusantium, laboriosam dicta aliquam.</p>		
+			<form autocomplete="off">				
+				<div class="row">
+					<div class="col">
+						<h2>Mantra</h2>					
+						<input type="text" name="mantra" />
+						<input type="number" name="mantra_count" value="3">
+						<button type="submit">Assign Mantra</button>				
+					</div>
+				</div>
+			</form>
+		</div>
+		
+	</div>
+
+	<script src="script.js">
+
+	</script>
+</body>
+</html>
