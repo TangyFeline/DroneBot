@@ -195,6 +195,10 @@ async def DronifyIntro(inter, message):
 
 app = Quart(__name__)
 
+@app.route('/')
+async def hello_world():
+  return "hello world!"
+
 @app.route("/<path:key>")
 async def control_panel(key):
   if key in storage.drone_keys:
@@ -251,5 +255,5 @@ async def set_values():
   await handle_set_values(data['key'], data['type'], data)
   return 'okay'
 
-bot.loop.create_task(app.run_task('127.0.0.1', 5000))
+bot.loop.create_task(app.run_task())
 bot.run(TOKEN)
