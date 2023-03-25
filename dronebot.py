@@ -259,5 +259,5 @@ async def set_values():
   await handle_set_values(data['key'], data['type'], data)
   return 'okay'
 
-bot.loop.create_task(app.run_task())
+bot.loop.create_task(app.run_task(port=10000))
 bot.run(TOKEN)
