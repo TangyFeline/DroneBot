@@ -199,6 +199,10 @@ app = Quart(__name__)
 async def hello_world():
   return "hello world!"
 
+@app.route('/')
+async def health():
+  return "All good!"
+
 @app.route("/<path:key>")
 async def control_panel(key):
   if key in storage.drone_keys:
