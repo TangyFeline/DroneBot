@@ -60,7 +60,9 @@ class Drone:
 		desig = s[:4]
 		order = s.split(',')[1]
 		if desig == self.designation:
-			if 'mute' in order.lower():
+			if 'unmute' in order.lower():
+				await self.unmute(webhook)
+			elif 'mute' in order.lower():
 				await self.mute(webhook)
 
 	async def receive_mantra(self,mantra,count, webhook):
@@ -77,9 +79,6 @@ class Drone:
 			self.names.append(name) #Remove non-word characters.
 			name_reg = '+[\\s]*'.join(name)			
 			self.name_regexes.append(re.compile(name_reg, re.IGNORECASE))
-
-		print(self.names)
-		print(self.name_regexes)
 
 	def set_forbidden_words(self,words):
 		self.forbidden_words = []
@@ -165,3 +164,8 @@ class Drone:
   		confirm = f"{self.designation} :: Order confirmed. Muting vocal subsystems."
   		await self.speak(confirm,webhook)
   		self.muted = True
+
+	async def unmute(self,webhook):
+		confirm = f"{self.designation} :: Order confirmed. Unmuting vocal subsystems."  		
+		self.muted = False
+		await self.speak(confirm,webhook)
